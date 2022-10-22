@@ -95,5 +95,6 @@
 </div>
 
 <script src="/js/resumes.js"></script>
+<script src="/js/imgUpdate.js"></script>
 
 <%@ include file="../layout/footer.jsp"%>
