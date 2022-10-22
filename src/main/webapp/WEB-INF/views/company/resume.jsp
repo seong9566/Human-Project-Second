@@ -32,7 +32,7 @@
 			</div>
 			<div class="btn-update">
 				<c:choose>
-					<c:when test="${ empty principal }">
+					<c:when test="${ empty principal}">
 						<button type="button" class="btn btn-primary">로그인</button>
 					</c:when>
 					<c:otherwise>

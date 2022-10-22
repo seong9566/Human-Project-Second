@@ -28,13 +28,13 @@ import site.metacoding.miniproject.service.personal.PersonalLikeService;
 import site.metacoding.miniproject.service.personal.PersonalService;
 import site.metacoding.miniproject.utill.ResumesValidationCheck;
 import site.metacoding.miniproject.utill.ValidationCheckUtil;
-import site.metacoding.miniproject.web.dto.request.InsertResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
 import site.metacoding.miniproject.web.dto.request.PersonalUpdateDto;
-import site.metacoding.miniproject.web.dto.request.UpdateResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
 import site.metacoding.miniproject.web.dto.response.CompanyAddressDto;
 import site.metacoding.miniproject.web.dto.response.CompanyInfoDto;
 import site.metacoding.miniproject.web.dto.response.CompanyMainDto;
-import site.metacoding.miniproject.web.dto.response.DetailResumesDto;
+import site.metacoding.miniproject.web.dto.response.ResumesDetailDto;
 import site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto;
 import site.metacoding.miniproject.web.dto.response.PagingDto;
 import site.metacoding.miniproject.web.dto.response.PersonalAddressDto;
@@ -64,10 +64,11 @@ public class PersonalController {
 
 	@PostMapping(value = "/personal/resumes")
 	public @ResponseBody ResponseDto<?> insertResumes(@RequestPart("file") MultipartFile file,
-			@RequestPart("insertResumesDto") InsertResumesDto insertResumesDto) throws Exception {
+			@RequestPart("insertResumesDto") ResumesInsertDto insertResumesDto) throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "C:\\Temp\\img\\";
+		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);
@@ -105,7 +106,7 @@ public class PersonalController {
 		SignedDto<?> signedDto = (SignedDto<?>) session.getAttribute("principal");
 		PersonalLike personalLike = personalLikeService.좋아요확인(resumesId, signedDto.getCompanyId());
 		model.addAttribute("personalLike", personalLike);
-		DetailResumesDto detailResumesDtoPS = personalService.resumesById(resumesId);
+		ResumesDetailDto detailResumesDtoPS = personalService.resumesById(resumesId);
 		model.addAttribute("detailResumesDtoPS", detailResumesDtoPS);
 		return "personal/resumesDetail";
 	}
@@ -113,18 +114,19 @@ public class PersonalController {
 	// 이력서 수정
 	@GetMapping("/personal/resumes/update/{resumesId}")
 	public String updateForm(@PathVariable Integer resumesId, Model model) {
-		DetailResumesDto detailResumesDtoPS = personalService.resumesById(resumesId);
+		ResumesDetailDto detailResumesDtoPS = personalService.resumesById(resumesId);
 		model.addAttribute("detailResumesDtoPS", detailResumesDtoPS);
 		return "personal/resumesUpdateForm";
 	}
 
 	@PutMapping(value = "/personal/resumes/update/{resumesId}")
 	public @ResponseBody ResponseDto<?> updateResumes(@PathVariable Integer resumesId,
-			@RequestPart("file") MultipartFile file, @RequestPart("updateResumesDto") UpdateResumesDto updateResumesDto)
+			@RequestPart("file") MultipartFile file, @RequestPart("updateResumesDto") ResumesUpdateDto updateResumesDto)
 			throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "C:\\Temp\\img\\";
+		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);

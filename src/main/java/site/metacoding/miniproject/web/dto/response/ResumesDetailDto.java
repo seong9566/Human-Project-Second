@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class DetailResumesDto {
+public class ResumesDetailDto {
 	// personal
 	private String personalName;
 	private String personalEmail;

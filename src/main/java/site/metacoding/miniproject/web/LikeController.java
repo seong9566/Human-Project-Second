@@ -19,7 +19,7 @@ import site.metacoding.miniproject.domain.like.personalike.PersonalLike;
 import site.metacoding.miniproject.domain.users.Users;
 import site.metacoding.miniproject.service.company.CompanyLikeService;
 import site.metacoding.miniproject.service.personal.PersonalLikeService;
-import site.metacoding.miniproject.web.dto.request.InsertRecommendDto;
+import site.metacoding.miniproject.web.dto.request.RecommendInsertDto;
 import site.metacoding.miniproject.web.dto.request.PersonalLikeDto;
 import site.metacoding.miniproject.web.dto.response.ResponseDto;
 import site.metacoding.miniproject.web.dto.response.SignedDto;

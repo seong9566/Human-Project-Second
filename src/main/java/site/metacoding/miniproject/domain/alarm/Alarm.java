@@ -2,7 +2,6 @@ package site.metacoding.miniproject.domain.alarm;
 
 import java.security.Timestamp;
 import java.util.HashMap;
-import java.util.Map;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

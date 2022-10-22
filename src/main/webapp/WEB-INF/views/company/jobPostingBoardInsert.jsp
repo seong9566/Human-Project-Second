@@ -10,7 +10,7 @@
 					<br />
 					<h3>회사정보</h3>
 					<div class="right">
-						<input id="" value="${companyInfo.companyPicture}" placeholder="회사 사진 자리" />
+						<img src="/img/${companyInfo.companyPicture}" style="width: 400px; height: 156px;">
 					</div>
 
 

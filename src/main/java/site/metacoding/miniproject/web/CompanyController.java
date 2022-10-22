@@ -65,7 +65,8 @@ public class CompanyController {
 	public @ResponseBody ResponseDto<?> companyUpdate(@RequestPart("file") MultipartFile file,@RequestPart ("companyUpdateDto")CompanyUpdateDto companyUpdateDto) throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "C:\\Temp\\img\\";
+		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);

@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
-import site.metacoding.miniproject.web.dto.request.InsertResumesDto;
-import site.metacoding.miniproject.web.dto.request.UpdateResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
+import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
 
 @Getter
 @Setter
@@ -16,13 +16,13 @@ public class Portfolio {
 	private Timestamp createdAt;
 	
 	// 이력서 작성
-	public Portfolio(InsertResumesDto insertResumesDto) {
+	public Portfolio(ResumesInsertDto insertResumesDto) {
 		this.portfolioSource = insertResumesDto.getPortfolioSource();
 		this.portfolioFile = insertResumesDto.getPortfolioFile();
 	}
 	
 	// 이력서 수정
-	public Portfolio(Integer portfolioId, UpdateResumesDto updateResumesDto) {
+	public Portfolio(Integer portfolioId, ResumesUpdateDto updateResumesDto) {
 		this.portfolioId = portfolioId;  
 		this.portfolioSource = updateResumesDto.getPortfolioSource();
 		this.portfolioFile = updateResumesDto.getPortfolioFile();

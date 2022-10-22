@@ -2,10 +2,9 @@ package site.metacoding.miniproject.domain.jobpostingboard;
 
 import java.util.List;
 
-import site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto;
-
 import org.apache.ibatis.annotations.Param;
 
+import site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto;
 import site.metacoding.miniproject.web.dto.response.JobPostingBoardListDto;
 import site.metacoding.miniproject.web.dto.response.PagingDto;
 import site.metacoding.miniproject.web.dto.response.PersonalMainDto;

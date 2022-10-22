@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class InsertRecommendDto {
+public class RecommendInsertDto {
 	private Integer personalLikeId;
 	private Integer resumesId;
 	private Integer companyId;

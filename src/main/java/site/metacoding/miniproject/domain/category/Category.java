@@ -5,10 +5,10 @@ import java.sql.Timestamp;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import site.metacoding.miniproject.web.dto.request.InsertResumesDto;
 import site.metacoding.miniproject.web.dto.request.JobPostingBoardInsertDto;
 import site.metacoding.miniproject.web.dto.request.JobPostingBoardUpdateDto;
-import site.metacoding.miniproject.web.dto.request.UpdateResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
+import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
 
 @Getter
 @Setter
@@ -22,14 +22,14 @@ public class Category {
 
 
 	// 이력서 작성
-	public Category(InsertResumesDto insertResumesDto) {
+	public Category(ResumesInsertDto insertResumesDto) {
 		this.categoryFrontend = insertResumesDto.getCategoryFrontend();
 		this.categoryBackend = insertResumesDto.getCategoryBackend();
 		this.categoryDevops = insertResumesDto.getCategoryDevops();
 	}
 	
 	// 이력서 수정
-	public Category(Integer categoryId, UpdateResumesDto updateResumesDto) {
+	public Category(Integer categoryId, ResumesUpdateDto updateResumesDto) {
 		this.categoryId = categoryId; 
 		this.categoryFrontend = updateResumesDto.getCategoryFrontend();
 		this.categoryBackend = updateResumesDto.getCategoryBackend();

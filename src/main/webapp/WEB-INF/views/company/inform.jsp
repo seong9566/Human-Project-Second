@@ -22,7 +22,7 @@
 		
 		<div class="mb-3 mt-3">
 			◆이메일
-			<input id="companyEmail" type="text" value="${companyInfo. companyEmail}" readonly>
+			<input id="companyEmail" type="text" value="${companyInfo.companyEmail}" readonly>
 		</div>
 		
 		<div class="mb-3 mt-3">

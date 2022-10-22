@@ -19,16 +19,15 @@ import site.metacoding.miniproject.domain.resumes.Resumes;
 import site.metacoding.miniproject.domain.resumes.ResumesDao;
 import site.metacoding.miniproject.domain.users.Users;
 import site.metacoding.miniproject.domain.users.UsersDao;
-import site.metacoding.miniproject.web.dto.request.InsertResumesDto;
 import site.metacoding.miniproject.web.dto.request.PersonalUpdateDto;
-import site.metacoding.miniproject.web.dto.request.UpdateResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
+import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
 import site.metacoding.miniproject.web.dto.response.CompanyMainDto;
-import site.metacoding.miniproject.web.dto.response.DetailResumesDto;
 import site.metacoding.miniproject.web.dto.response.PagingDto;
 import site.metacoding.miniproject.web.dto.response.PersonalAddressDto;
 import site.metacoding.miniproject.web.dto.response.PersonalFormDto;
 import site.metacoding.miniproject.web.dto.response.PersonalInfoDto;
-import site.metacoding.miniproject.web.dto.response.PersonalMainDto;
+import site.metacoding.miniproject.web.dto.response.ResumesDetailDto;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +42,7 @@ public class PersonalService {
 
 	// 이력서 작성 하기
 	@Transactional(rollbackFor = RuntimeException.class)
-	public void insertResumes(Integer personalId, InsertResumesDto insertResumesDto) {
+	public void insertResumes(Integer personalId, ResumesInsertDto insertResumesDto) {
 
 		Category category = new Category(insertResumesDto);
 		categoryDao.insert(category);
@@ -72,13 +71,13 @@ public class PersonalService {
 	}
 
 	// 이력서 상세 보기
-	public DetailResumesDto resumesById(Integer resumesId) {
+	public ResumesDetailDto resumesById(Integer resumesId) {
 		return resumesDao.resumesById(resumesId);
 	}
 
 	// 이력서 수정 하기
 	@Transactional(rollbackFor = RuntimeException.class)
-	public void updateResumes(Integer resumesId, UpdateResumesDto updateResumesDto) {
+	public void updateResumes(Integer resumesId, ResumesUpdateDto updateResumesDto) {
 		
 		Resumes resumes = new Resumes(resumesId, updateResumesDto);
 		resumesDao.update(resumes);

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class InsertResumesDto {	
+public class ResumesInsertDto {	
 	private Boolean oneYearLess;
 	private Boolean twoYearOver;
 	private Boolean threeYearOver;

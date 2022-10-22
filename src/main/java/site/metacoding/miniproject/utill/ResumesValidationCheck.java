@@ -7,12 +7,12 @@ import org.springframework.util.ObjectUtils;
 
 import site.metacoding.miniproject.config.handler.exception.NormalException;
 import site.metacoding.miniproject.config.handler.exception.ValCheckException;
-import site.metacoding.miniproject.web.dto.request.InsertResumesDto;
-import site.metacoding.miniproject.web.dto.request.UpdateResumesDto;
+import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
+import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
 
 public class ResumesValidationCheck {
 		
-	public static void valCheckToInsertResumes(InsertResumesDto insertResumesDto) {
+	public static void valCheckToInsertResumes(ResumesInsertDto insertResumesDto) {
 		
 		if(insertResumesDto == null)
 			throw new NormalException("잘못된 요청입니다.");
@@ -38,7 +38,7 @@ public class ResumesValidationCheck {
 	    }
 	}
 	
-	public static void valCheckToUpdateResumes(UpdateResumesDto updateResumesDto) {
+	public static void valCheckToUpdateResumes(ResumesUpdateDto updateResumesDto) {
 		
 		if(updateResumesDto == null)
 			throw new NormalException("잘못된 요청입니다.");
