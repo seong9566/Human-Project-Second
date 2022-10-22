@@ -80,5 +80,6 @@
 	</div>
 	
 <script src="/js/resumes.js"></script>
+<script src="/js/imgInsert.js"></script>
 	
 <%@ include file="../layout/footer.jsp"%>
