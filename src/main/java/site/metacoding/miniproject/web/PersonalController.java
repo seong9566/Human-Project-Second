@@ -269,14 +269,14 @@ public class PersonalController {
 	}
 
 	// 내정보 보기
-	@GetMapping("/personal/info")
+	@GetMapping("/personal/personalInfo")
 	public String form(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		PersonalFormDto personalformPS = personalService.personalformById(principal.getPersonalId());
 		PersonalAddressDto personalAddressPS = personalService.personalAddress(principal.getPersonalId());
 		model.addAttribute("personalAddress", personalAddressPS);
 		model.addAttribute("personalform", personalformPS);
-		return "personal/info";
+		return "personal/personalInfo";
 	}
 
 	@GetMapping("/personal/update")

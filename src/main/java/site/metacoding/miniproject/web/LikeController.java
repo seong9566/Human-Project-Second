@@ -77,7 +77,7 @@ public class LikeController {
 		return new ResponseDto<>(1, "좋아요취소", null);
 	}
 
-	@GetMapping("/job_posting_View_Apply/{companyId}")
+	@GetMapping("/jobPostingViewApply/{companyId}")
 	public String company(@PathVariable Integer companyId, Model model) {
 		SignedDto<?> signedDto = (SignedDto<?>) session.getAttribute("principal");
 		CompanyLike companyLike = companyLikeService.좋아요확인(companyId, signedDto.getPersonalId());

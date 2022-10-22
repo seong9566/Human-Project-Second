@@ -77,7 +77,7 @@
 				</c:when>
 				<c:otherwise>
 					<ul>
-						<li class="nav-link"><a href="/personal/info" style="color: black;">내정보</a></li>
+						<li class="nav-link"><a href="/personal/personalInfo" style="color: black;">내정보</a></li>
 						<li class="nav-link"><a href="/personal/resumesForm" style="color: black;">이력서작성하기</a></li>
 						<li class="nav-link"><a href="/personal/myresumesList" style="color: black;">내이력서목록보기</a></li>
 						<li class="nav-link"><a href="/logout" style="color: black;">로그아웃</a></li>
