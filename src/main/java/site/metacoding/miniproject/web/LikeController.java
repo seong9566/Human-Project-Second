@@ -49,12 +49,12 @@ public class LikeController {
 		return new ResponseDto<>(1, "좋아요취소", null);
 	}
 
-	@GetMapping("/recommend")
+	@GetMapping("/recommendList")
 	public String recommend(Model model) {
 		Integer companyId = (Integer) session.getAttribute("companyId");
 		List<PersonalLikeDto> personalLikeDto = personalLikeService.좋아요이력서(companyId);
 		model.addAttribute("personalLikeList", personalLikeDto);
-		return "/company/recommend";
+		return "/company/recommendList";
 	}
 
 	@PostMapping("/companyLike/{companyId}/likes")
@@ -82,7 +82,7 @@ public class LikeController {
 		SignedDto<?> signedDto = (SignedDto<?>) session.getAttribute("principal");
 		CompanyLike companyLike = companyLikeService.좋아요확인(companyId, signedDto.getPersonalId());
 		model.addAttribute("companyLike", companyLike);
-		return "/personal/job_posting_View_Apply";
+		return "/personal/jobPostingViewApply";
 	}
 
 }

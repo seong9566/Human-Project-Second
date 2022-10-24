@@ -45,6 +45,9 @@ public class JobPostingBoardDetailDto {
 	private Integer categoryId;
 	private Integer careerId;
 	
+	//count
+	private Integer count;
+	
 	
 }
 

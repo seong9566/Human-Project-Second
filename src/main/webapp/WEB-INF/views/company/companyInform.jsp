@@ -49,7 +49,7 @@
 <script>
 //수정 폼 이동 
 $("#btnUpdateForm").click(()=>{
-   location.href="/company/inform/update";
+   location.href="/company/companyInform/update";
 });
 
 </script>

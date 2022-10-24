@@ -64,10 +64,10 @@
 				</c:when>
 				<c:when test="${principal.companyId != null}">
 					<ul>
-						<li class="nav-link"><a href="/recommend" style="color: black;">관심 이력서 보기</a></li>
+						<li class="nav-link"><a href="/recommendList" style="color: black;">관심 이력서 보기</a></li>
 						<li class="nav-link"><a href="/company/jobPostingBoardList" style="color: black;">
 								공고관리</a></li>
-						<li class="nav-link"><a href="/company/inform" style="color: black;">기업정보</a></li>
+						<li class="nav-link"><a href="/company/companyInform" style="color: black;">기업정보</a></li>
 						<li class="nav-link"><a href="/logout" onclick="disconnect()" style="color: black;">로그아웃</a></li>
 						<li class="nav-link" style="color: black;">${principal.userinfo.companyName}님환영합니다.</li>
 						<li class="nav-link fa-regular fa-bell fa-xl" data-bs-toggle="modal"
