@@ -279,17 +279,17 @@ public class PersonalController {
 		return "personal/personalInfo";
 	}
 
-	@GetMapping("/personal/update")
+	@GetMapping("/personal/personalUpdate")
 	public String update(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		PersonalUpdateDto personalUpdateFormPS = personalService.personalUpdateById(principal.getPersonalId());
 		PersonalAddressDto personalAddressPS = personalService.personalAddress(principal.getPersonalId());
 		model.addAttribute("personalAddress", personalAddressPS);
 		model.addAttribute("personalUpdateForm", personalUpdateFormPS);
-		return "personal/update";
+		return "personal/personalUpdate";
 	}
 
-	@PutMapping("/personal/update")
+	@PutMapping("/personal/personalUpdate")
 	public @ResponseBody ResponseDto<?> personalUpdate(@RequestBody PersonalUpdateDto personalUpdateDto) {
 		ValidationCheckUtil.valCheckToUpdatePersonal(personalUpdateDto);
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");

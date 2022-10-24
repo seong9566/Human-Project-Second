@@ -16,7 +16,7 @@ function update(){
 	if(!joinform_check()){ 
 		return;
 	}
-	$.ajax("/personal/update", {
+	$.ajax("/personal/personalUpdate", {
 		type: "PUT",
 		dataType: "json",
 		data: JSON.stringify(data),
@@ -26,7 +26,7 @@ function update(){
 	}).done((res) => {
 		if (res.code == 1) {
 			alert("회원 수정 완료");
-			location.href="/personal/info";
+			location.href="/personal/personalInfo";
 		} else {
 			alert("업데이트에 실패하였습니다");
 		}
