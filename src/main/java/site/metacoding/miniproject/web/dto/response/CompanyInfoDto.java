@@ -15,5 +15,7 @@ public class CompanyInfoDto {
 	private String companyEmail;
 	private String companyPicture;
 	private String companyAddress;
+	
+	private Integer count;
 }
 

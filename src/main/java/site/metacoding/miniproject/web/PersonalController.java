@@ -305,6 +305,7 @@ public class PersonalController {
 		CompanyAddressDto addressPS = companyService.findByAddress(jobPostingPS.getCompanyId());
 		model.addAttribute("address", addressPS);
 		model.addAttribute("jobPostingPS", jobPostingPS);
+		System.out.println("jobpostingLike : "+ jobPostingPS.getCompanyPhoneNumber());
 		return "personal/jobPostingViewApply";
 	}
 
@@ -315,6 +316,7 @@ public class PersonalController {
 		CompanyAddressDto addressPS = companyService.findByAddress(companyId);
 		model.addAttribute("address", addressPS);
 		model.addAttribute("companyInfo", companyPS);
+		System.out.println("companyPS : "+companyPS.getCount());
 		return "personal/companyInform";
 	}
 
