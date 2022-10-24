@@ -89,7 +89,7 @@
 
 	<div class="d-grid gap-1 col-2 mx-auto">
 		<button id="btnUpdate" type="button" class="btn btn-primary"
-			onclick="location.href='update'">정보수정</button>
+			onclick="location.href='personalUpdate'">정보수정</button>
 	</div>
 </div>
 
