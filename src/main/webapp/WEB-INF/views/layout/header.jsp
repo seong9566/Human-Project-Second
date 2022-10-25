@@ -54,7 +54,7 @@
 <body>
 <div class="container">
 <header>
-	<a href="/main">로고</a>
+	<a href="/main"><img src="/image/logo.jpg" alt="..."></a>
 	<nav>
 		<ul class="navbar-nav" style="width: 100%">
 			<c:choose>
