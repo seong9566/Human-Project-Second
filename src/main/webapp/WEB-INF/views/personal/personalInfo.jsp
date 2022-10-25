@@ -88,8 +88,8 @@
 	<div class="mb-5"></div>
 
 	<div class="d-grid gap-1 col-2 mx-auto">
-		<button id="btnUpdate" type="button" class="btn btn-primary"
-			onclick="location.href='update'">정보수정</button>
+		<button id="btnUpdate" type="button" class="btn btn-primary" style="background-color: rgba(0, 195, 98, 255); border: none; margin-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
+			onclick="location.href='personalUpdate'">정보수정</button>
 	</div>
 </div>
 

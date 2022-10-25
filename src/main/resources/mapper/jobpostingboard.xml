@@ -83,7 +83,7 @@
 
 	<select id="findByDetail"
 		resultType="site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto">
-		SELECT 
+			SELECT 
 		jpb.job_posting_board_id,
 		jpb.company_id,
 		jpb.job_posting_board_category_id,
@@ -105,17 +105,14 @@
 		cp.company_picture,
 		cp.company_name,
 		cp.company_email,
-		cp.company_phone_number,
-		cl.company_like_id
+		cp.company_phone_number
 		FROM job_posting_board jpb
-		LEFT OUTER JOIN category c
-		ON jpb.job_posting_board_category_id = c.category_id
-		LEFT OUTER JOIN career cr
-		ON jpb.job_posting_board_career_id = cr.career_id
 		LEFT OUTER JOIN company cp
 		ON jpb.company_id = cp.company_id
-		LEFT OUTER JOIN company_like cl
-		ON jpb.company_id = cl.company_id
+		INNER JOIN category c
+		ON jpb.job_posting_board_category_id = c.category_id
+		INNER JOIN career cr
+		ON jpb.job_posting_board_career_id = cr.career_id
 		WHERE jpb.job_posting_board_id =  #{jobPostingBoardId}
 	</select>
 

@@ -40,33 +40,33 @@ public class CompanyController {
 	private final CompanyService companyService;
 
 	// 회사 정보 보기
-	@GetMapping("/company/inform")
+	@GetMapping("/company/companyInform")
 	public String inform(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		CompanyInfoDto companyPS = companyService.findCompanyInfo(principal.getCompanyId());
 		CompanyAddressDto addressPS = companyService.findByAddress(principal.getCompanyId());
 		model.addAttribute("address", addressPS);
 		model.addAttribute("companyInfo", companyPS);
-		return "company/inform";
+		return "company/companyInform";
 	}
 
 	// 회사 정보 업데이트
-	@GetMapping("/company/inform/update")
+	@GetMapping("/company/companyInform/companyUpdate")
 	public String companyUpdateForm(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		CompanyInfoDto companyPS = companyService.findCompanyInfo(principal.getCompanyId());
 		CompanyAddressDto addressPS = companyService.findByAddress(principal.getCompanyId());
 		model.addAttribute("address", addressPS);
 		model.addAttribute("companyInfo", companyPS);
-		return "company/update";
+		return "company/companyUpdate";
 	}
 
-	@PutMapping(value="/company/inform/update")
+	@PutMapping(value="/company/companyInform/update")
 	public @ResponseBody ResponseDto<?> companyUpdate(@RequestPart("file") MultipartFile file,@RequestPart ("companyUpdateDto")CompanyUpdateDto companyUpdateDto) throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		//String filePath = "C:\\Temp\\img\\";
-		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
+		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);

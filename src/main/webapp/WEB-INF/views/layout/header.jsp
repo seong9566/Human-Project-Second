@@ -22,6 +22,7 @@
 	rel="stylesheet">
 <link href="/css/header.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/login.css">
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 <style>
@@ -53,7 +54,7 @@
 <body>
 <div class="container">
 <header>
-	<a href="/main">로고</a>
+	<a href="/main"><img src="/image/logo.jpg" alt="..."></a>
 	<nav>
 		<ul class="navbar-nav" style="width: 100%">
 			<c:choose>
@@ -64,10 +65,10 @@
 				</c:when>
 				<c:when test="${principal.companyId != null}">
 					<ul>
-						<li class="nav-link"><a href="/recommend" style="color: black;">관심 이력서 보기</a></li>
+						<li class="nav-link"><a href="/recommendList" style="color: black;">관심 이력서 보기</a></li>
 						<li class="nav-link"><a href="/company/jobPostingBoardList" style="color: black;">
 								공고관리</a></li>
-						<li class="nav-link"><a href="/company/inform" style="color: black;">기업정보</a></li>
+						<li class="nav-link"><a href="/company/companyInform" style="color: black;">기업정보</a></li>
 						<li class="nav-link"><a href="/logout" onclick="disconnect()" style="color: black;">로그아웃</a></li>
 						<li class="nav-link" style="color: black;">${principal.userinfo.companyName}님환영합니다.</li>
 						<li class="nav-link fa-regular fa-bell fa-xl" data-bs-toggle="modal"
@@ -77,7 +78,7 @@
 				</c:when>
 				<c:otherwise>
 					<ul>
-						<li class="nav-link"><a href="/personal/info" style="color: black;">내정보</a></li>
+						<li class="nav-link"><a href="/personal/personalInfo" style="color: black;">내정보</a></li>
 						<li class="nav-link"><a href="/personal/resumesForm" style="color: black;">이력서작성하기</a></li>
 						<li class="nav-link"><a href="/personal/myresumesList" style="color: black;">내이력서목록보기</a></li>
 						<li class="nav-link"><a href="/logout" style="color: black;">로그아웃</a></li>

@@ -37,7 +37,7 @@ function update() {
 	};
 		formData.append('file', $("#file")[0].files[0]);
 	formData.append('companyUpdateDto', new Blob([JSON.stringify(data)], { type: "application/json" }));
-	$.ajax("/company/inform/update", {
+	$.ajax("/company/companyInform/update", {
 		type: "PUT",
 		data: formData,
 	 	processData: false,    
@@ -46,7 +46,7 @@ function update() {
 	}).done((res) => {
 		if (res.code == 1) {
 			alert("회원 수정 완료");
-			location.href="/company/inform";
+			location.href="/company/companyInform";
 		} else {
 			alert("업데이트에 실패하였습니다");
 		}

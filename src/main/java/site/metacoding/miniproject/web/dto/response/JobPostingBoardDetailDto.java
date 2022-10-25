@@ -46,6 +46,7 @@ public class JobPostingBoardDetailDto {
 	private Integer careerId;
 	
 	
+	
 }
 
 

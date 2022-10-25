@@ -67,8 +67,8 @@ public class PersonalController {
 			@RequestPart("insertResumesDto") ResumesInsertDto insertResumesDto) throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		//String filePath = "C:\\Temp\\img\\";
-		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
+		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);
@@ -125,8 +125,8 @@ public class PersonalController {
 			throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
-		//String filePath = "C:\\Temp\\img\\";
-		String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
+		String filePath = "C:\\Temp\\img\\";
+		//String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);
@@ -269,27 +269,27 @@ public class PersonalController {
 	}
 
 	// 내정보 보기
-	@GetMapping("/personal/info")
+	@GetMapping("/personal/personalInfo")
 	public String form(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		PersonalFormDto personalformPS = personalService.personalformById(principal.getPersonalId());
 		PersonalAddressDto personalAddressPS = personalService.personalAddress(principal.getPersonalId());
 		model.addAttribute("personalAddress", personalAddressPS);
 		model.addAttribute("personalform", personalformPS);
-		return "personal/info";
+		return "personal/personalInfo";
 	}
 
-	@GetMapping("/personal/update")
+	@GetMapping("/personal/personalUpdate")
 	public String update(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		PersonalUpdateDto personalUpdateFormPS = personalService.personalUpdateById(principal.getPersonalId());
 		PersonalAddressDto personalAddressPS = personalService.personalAddress(principal.getPersonalId());
 		model.addAttribute("personalAddress", personalAddressPS);
 		model.addAttribute("personalUpdateForm", personalUpdateFormPS);
-		return "personal/update";
+		return "personal/personalUpdate";
 	}
 
-	@PutMapping("/personal/update")
+	@PutMapping("/personal/personalUpdate")
 	public @ResponseBody ResponseDto<?> personalUpdate(@RequestBody PersonalUpdateDto personalUpdateDto) {
 		ValidationCheckUtil.valCheckToUpdatePersonal(personalUpdateDto);
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
@@ -305,6 +305,7 @@ public class PersonalController {
 		CompanyAddressDto addressPS = companyService.findByAddress(jobPostingPS.getCompanyId());
 		model.addAttribute("address", addressPS);
 		model.addAttribute("jobPostingPS", jobPostingPS);
+		System.out.println("jobpostingLike : "+ jobPostingPS.getCompanyPhoneNumber());
 		return "personal/jobPostingViewApply";
 	}
 
@@ -315,6 +316,7 @@ public class PersonalController {
 		CompanyAddressDto addressPS = companyService.findByAddress(companyId);
 		model.addAttribute("address", addressPS);
 		model.addAttribute("companyInfo", companyPS);
+		System.out.println("companyPS : "+companyPS.getCount());
 		return "personal/companyInform";
 	}
 
