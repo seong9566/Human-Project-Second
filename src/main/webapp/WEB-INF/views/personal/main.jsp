@@ -3,12 +3,12 @@
 <%@ include file="../layout/header.jsp"%>
 <div id="containermain">
 	<div id="companyrank">
-		<h2>회사 공고 추천 TOP 3</h2>
+		<h2 style="text-align: center">회사 공고 추천 TOP 3</h2>
 		<ul>
 
 			<li>
 				<div class="company-item">
-					<div class="company-cover"></div>
+					<div class="company-cover1"></div>
 					<div class="album-info">
 						<p class="company_title">이름1</p>
 						<p class="likerank">1등</p>
@@ -17,7 +17,7 @@
 			</li>
 			<li>
 				<div class="company-item">
-					<div class="company-cover"></div>
+					<div class="company-cover2"></div>
 					<div class="company-info">
 						<p class="company_title">이름2</p>
 						<p class="likerank">2등</p>
@@ -26,7 +26,7 @@
 			</li>
 			<li>
 				<div class="company-item">
-					<div class="company-cover"></div>
+					<div class="company-cover3"></div>
 					<div class="album-info">
 						<p class="company_title">이름3</p>
 						<p class="likerank">3등</p>
