@@ -51,7 +51,7 @@ public class CompanyController {
 	}
 
 	// 회사 정보 업데이트
-	@GetMapping("/company/companyInform/update")
+	@GetMapping("/company/companyInform/companyUpdate")
 	public String companyUpdateForm(Model model) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		CompanyInfoDto companyPS = companyService.findCompanyInfo(principal.getCompanyId());

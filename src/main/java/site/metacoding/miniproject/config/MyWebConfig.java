@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyWebConfig implements WebMvcConfigurer{
 	
 	public void addResourceHandlers(ResourceHandlerRegistry resgistry) {
-		//resgistry.addResourceHandler("/img/**").addResourceLocations("file:///C:/temp/img/");
-		resgistry.addResourceHandler("/img/**").addResourceLocations("file:/Users/ihyeonseong/Desktop/img/");// Mac전용 경
+		resgistry.addResourceHandler("/img/**").addResourceLocations("file:///C:/temp/img/");
+		//resgistry.addResourceHandler("/img/**").addResourceLocations("file:/Users/ihyeonseong/Desktop/img/");// Mac전용 경
 		
 	}
 }
