@@ -3,6 +3,7 @@ $("#btnUpdate").click(() => {
 	update();
 });
 
+
 function update(){
 	let data ={
 			loginPassword: $("#password").val(),
