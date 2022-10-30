@@ -26,7 +26,7 @@
 	</insert>
 
 	<select id="companyInfo"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyInfoDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyInfoDto">
 		SELECT 
 		u.users_id,
 		u.login_id,
@@ -44,7 +44,7 @@
 		WHERE c.company_id =#{companyId}
 	</select>
 	
-	<select id="findByAddress" resultType="site.metacoding.miniproject.web.dto.response.CompanyAddressDto">
+	<select id="findByAddress" resultType="site.metacoding.miniproject.web.dto.response.company.CompanyAddressDto">
 		SELECT company_id,
 		SUBSTRING_INDEX(SUBSTRING_INDEX(company_address,',',1),',',-1) AS
 		zonecode,

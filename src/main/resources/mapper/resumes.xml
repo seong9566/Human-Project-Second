@@ -20,7 +20,7 @@
 	</select>
 
 	<select id="resumesById"
-		resultType="site.metacoding.miniproject.web.dto.response.ResumesDetailDto">
+		resultType="site.metacoding.miniproject.web.dto.response.resume.ResumesDetailDto">
 		SELECT p.personal_name, p.personal_email,
 		p.personal_education, p.personal_phone_number,
 		r.resumes_id, r.resumes_title, r.resumes_picture, r.resumes_introduce,
@@ -60,7 +60,7 @@
 	</delete>
 
 	<select id="findAll"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyMainDto">
 		SELECT * FROM resumes
 		ORDER BY resumes_id DESC
 		OFFSET
@@ -68,7 +68,7 @@
 	</select>
 
 	<select id="resumesPaging"
-		resultType="site.metacoding.miniproject.web.dto.response.PagingDto">
+		resultType="site.metacoding.miniproject.web.dto.response.etc.PagingDto">
 		SELECT totalCount, totalPage, currentPage,
 		if(currentPage=0, 1, 0)
 		FIRST,
@@ -87,7 +87,7 @@
 		) paging
 	</select>	
 	<select id="findSearch"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyMainDto">
 		SELECT resumes_id, resumes_title, resumes_place
 		FROM resumes
 		WHERE resumes_title like CONCAT('%', #{keyword}, '%')
@@ -100,7 +100,7 @@
 	</insert>
 	
 		<select id="findCategory"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyMainDto">
 		SELECT r.resumes_id, c.category_id, c.category_frontend, 
 		c.category_backend, c.category_devops, r.resumes_category_id,
 		r.resumes_title, r.resumes_place
@@ -125,7 +125,7 @@
 	</select>	
 	
 	<select id="findCategorySearch"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyMainDto">
 		SELECT r.resumes_id, c.category_id, c.category_frontend, 
 		c.category_backend, c.category_devops, r.resumes_category_id,
 		r.resumes_title, r.resumes_place

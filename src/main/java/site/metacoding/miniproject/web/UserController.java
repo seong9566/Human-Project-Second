@@ -22,13 +22,13 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.miniproject.config.SessionConfig;
 import site.metacoding.miniproject.domain.alarm.Alarm;
 import site.metacoding.miniproject.domain.subscribe.Subscribe;
-import site.metacoding.miniproject.service.Users.UsersService;
+import site.metacoding.miniproject.service.users.UsersService;
 import site.metacoding.miniproject.utill.ValidationCheckUtil;
-import site.metacoding.miniproject.web.dto.request.CompanyJoinDto;
-import site.metacoding.miniproject.web.dto.request.LoginDto;
-import site.metacoding.miniproject.web.dto.request.PersonalJoinDto;
+import site.metacoding.miniproject.web.dto.request.company.CompanyJoinDto;
+import site.metacoding.miniproject.web.dto.request.etc.LoginDto;
+import site.metacoding.miniproject.web.dto.request.personal.PersonalJoinDto;
 import site.metacoding.miniproject.web.dto.response.ResponseDto;
-import site.metacoding.miniproject.web.dto.response.SignedDto;
+import site.metacoding.miniproject.web.dto.response.etc.SignedDto;
 
 @Controller
 @RequiredArgsConstructor
@@ -141,7 +141,7 @@ public class UserController {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
 		String filePath = "C:\\Temp\\img\\";
-		//String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
+		// String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);

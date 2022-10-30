@@ -2,36 +2,36 @@
 
 // 이력서 작성
 function clickCheck(target) {
-    document.querySelectorAll(`input[type=radio]`)
-        .forEach(el => el.checked = false);
-    target.checked = true;
+	document.querySelectorAll(`input[type=radio]`)
+		.forEach(el => el.checked = false);
+	target.checked = true;
 }
 
-$('#etc').click(function() {
+$('#etc').click(function () {
 	var checked = $('#etc').is(':checked');
 	if (checked)
 		$('input:checkbox').prop('checked', true);
 });
 
-$("#btnSave").click(()=>{
+$("#btnSave").click(() => {
 	insert();
 });
 
-function insert(){	
+function insert() {
 
 	let formData = new FormData();
 
 	let year_check = document.querySelectorAll('input[name="year"]:checked').length;
-		if(year_check == 0) {
-		    alert('경력사항을 하나 이상 선택해주세요.')
-		    return false;
-	    }
-    
+	if (year_check == 0) {
+		alert('경력사항을 하나 이상 선택해주세요.')
+		return false;
+	}
+
 	let interest_check = document.querySelectorAll('input[name="interest"]:checked').length;
-		if(interest_check == 0) {
-		    alert('관심분야를 하나 이상 선택해주세요.')
-		    return false;
-	    }
+	if (interest_check == 0) {
+		alert('관심분야를 하나 이상 선택해주세요.')
+		return false;
+	}
 
 	let data = {
 		personalId: $("#userinfoId").val(),
@@ -47,46 +47,46 @@ function insert(){
 		categoryBackend: $("input:checkbox[value='categoryBackend']").is(":checked"),
 		categoryDevops: $("input:checkbox[value='categoryDevops']").is(":checked"),
 		resumesIntroduce: $("#resumesIntroduce").val()
-	};	
+	};
 	formData.append('file', $("#file")[0].files[0]);
-	formData.append('insertResumesDto', new Blob([JSON.stringify(data)], { type: "application/json" }));
-	$.ajax("/personal/resumes",{
+	formData.append('ResumesInsertDto', new Blob([JSON.stringify(data)], { type: "application/json" }));
+	$.ajax("/personal/resumes", {
 		type: "POST",
 		data: formData,
-	 	processData: false,    
-   		contentType: false, 
-		enctype : 'multipart/form-data'
-	}).done((res)=>{
-		if(res.code == 1){
+		processData: false,
+		contentType: false,
+		enctype: 'multipart/form-data'
+	}).done((res) => {
+		if (res.code == 1) {
 			alert("이력서 등록 성공");
-			location.href="/personal/myresumesList";
-		}else{
+			location.href = "/personal/resumesList";
+		} else {
 			alert(res.message);
 		}
 	});
 }
 
 //이력서 수정
-$("#btnUpdate").click(()=>{
-		update();
+$("#btnUpdate").click(() => {
+	update();
 });
-	
-function update(){
+
+function update() {
 
 	let formData = new FormData();
 
 	let year_check = document.querySelectorAll('input[name="year"]:checked').length;
-	if(year_check == 0) {
-	    alert('경력사항을 하나 이상 선택해주세요.')
-	    return false;
-    }
-    
+	if (year_check == 0) {
+		alert('경력사항을 하나 이상 선택해주세요.')
+		return false;
+	}
+
 	let interest_check = document.querySelectorAll('input[name="interest"]:checked').length;
-	if(interest_check == 0) {
-	    alert('관심분야를 하나 이상 선택해주세요.')
-	    return false;
-    }
-	    
+	if (interest_check == 0) {
+		alert('관심분야를 하나 이상 선택해주세요.')
+		return false;
+	}
+
 	let resumesId = $("#resumesId").val();
 	let data = {
 		categoryId: $("#resumesCategoryId").val(),
@@ -104,38 +104,38 @@ function update(){
 		categoryFrontend: $("input:checkbox[value='categoryFrontend']").is(":checked"),
 		categoryBackend: $("input:checkbox[value='categoryBackend']").is(":checked"),
 		categoryDevops: $("input:checkbox[value='categoryDevops']").is(":checked")
-	};	
+	};
 	formData.append('file', $("#file")[0].files[0]);
-	formData.append('updateResumesDto', new Blob([JSON.stringify(data)], { type: "application/json" }));
+	formData.append('ResumesUpdateDto', new Blob([JSON.stringify(data)], { type: "application/json" }));
 
-	$.ajax("/personal/resumes/update/"+resumesId,{
+	$.ajax("/personal/resumes/update/" + resumesId, {
 		type: "PUT",
 		data: formData,
-		 processData: false,    
-		   		contentType: false, 
-				enctype : 'multipart/form-data'
-	}).done((res)=>{
-		if(res.code == 1){
+		processData: false,
+		contentType: false,
+		enctype: 'multipart/form-data'
+	}).done((res) => {
+		if (res.code == 1) {
 			alert("이력서 수정 성공");
-			location.href="/personal/resumes/"+resumesId; 
-		}else{
+			location.href = "/personal/resumes/" + resumesId;
+		} else {
 			alert(res.message);
 		}
-	});																							
+	});
 }
-		
+
 // 이력서 삭제
-function deleteById(id){				
-	$.ajax("/personal/resumes/delete/"+id,{
+function deleteById(id) {
+	$.ajax("/personal/resumes/delete/" + id, {
 		type: "delete",
 		dataType: "json"
-	}).done((res)=>{
+	}).done((res) => {
 		console.log(res);
-		if(res.code == 1){
+		if (res.code == 1) {
 			alert("삭제되었습니다.");
 			location.reload();
-		}else{
+		} else {
 			alert("삭제에 실패하였습니다.");
 		}
-	});		
+	});
 }

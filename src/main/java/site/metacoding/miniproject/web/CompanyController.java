@@ -22,20 +22,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.miniproject.service.company.CompanyService;
-import site.metacoding.miniproject.web.dto.request.CompanyUpdateDto;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardInsertDto;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardUpdateDto;
-import site.metacoding.miniproject.web.dto.response.CompanyAddressDto;
-import site.metacoding.miniproject.web.dto.response.CompanyInfoDto;
-import site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto;
-import site.metacoding.miniproject.web.dto.response.JobPostingBoardListDto;
+import site.metacoding.miniproject.web.dto.request.company.CompanyUpdateDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardInsertDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardUpdateDto;
 import site.metacoding.miniproject.web.dto.response.ResponseDto;
-import site.metacoding.miniproject.web.dto.response.SignedDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyAddressDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyInfoDto;
+import site.metacoding.miniproject.web.dto.response.etc.SignedDto;
+import site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardDetailDto;
+import site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardListDto;
 
 @Controller
 @RequiredArgsConstructor
 public class CompanyController {
-	
+
 	private final HttpSession session;
 	private final CompanyService companyService;
 
@@ -61,12 +61,13 @@ public class CompanyController {
 		return "company/companyUpdate";
 	}
 
-	@PutMapping(value="/company/companyInform/update")
-	public @ResponseBody ResponseDto<?> companyUpdate(@RequestPart("file") MultipartFile file,@RequestPart ("companyUpdateDto")CompanyUpdateDto companyUpdateDto) throws Exception {
+	@PutMapping(value = "/company/companyInform/update")
+	public @ResponseBody ResponseDto<?> companyUpdate(@RequestPart("file") MultipartFile file,
+			@RequestPart("companyUpdateDto") CompanyUpdateDto companyUpdateDto) throws Exception {
 		int pos = file.getOriginalFilename().lastIndexOf('.');
 		String extension = file.getOriginalFilename().substring(pos + 1);
 		String filePath = "C:\\Temp\\img\\";
-		//String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로 
+		// String filePath = "/Users/ihyeonseong/Desktop/img";//Mac전용 경로
 		String imgSaveName = UUID.randomUUID().toString();
 		String imgName = imgSaveName + "." + extension;
 		File makeFileFolder = new File(filePath);
@@ -98,26 +99,26 @@ public class CompanyController {
 		model.addAttribute("principal", principal);
 		return "company/jobPostingBoardInsert";
 	}
+
 	@PostMapping("/company/jobPostingBoard/insert")
 	public @ResponseBody ResponseDto<?> insertJobPostingBoard(@RequestBody JobPostingBoardInsertDto insertDto) {
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		companyService.insertJobPostingBoard(principal.getCompanyId(), insertDto);
 		return new ResponseDto<>(1, "등록 성공", null);
 	}
-	
 
-	// 회사가 작성한 구인 공고 리스트 보기 
+	// 회사가 작성한 구인 공고 리스트 보기
 	@GetMapping("/company/jobPostingBoardList")
 	public String jobPostingBoardList(Model model, Integer companyId) {
-	SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
-	List<JobPostingBoardListDto> jobPostingBoardList =  companyService.jobPostingBoardList(principal.getCompanyId());
-	model.addAttribute("jobPostingBoardList", jobPostingBoardList);
-	return "company/jobPostingBoardList";
+		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
+		List<JobPostingBoardListDto> jobPostingBoardList = companyService.jobPostingBoardList(principal.getCompanyId());
+		model.addAttribute("jobPostingBoardList", jobPostingBoardList);
+		return "company/jobPostingBoardList";
 	}
-	
+
 	// 채용 공고 상세보기
 	@GetMapping("/company/jobPostingBoardDetail/{jobPostingBoardId}")
-	public String jobPostingBoardDetail(Model model,@PathVariable Integer jobPostingBoardId) {
+	public String jobPostingBoardDetail(Model model, @PathVariable Integer jobPostingBoardId) {
 		JobPostingBoardDetailDto jobPostingPS = companyService.jobPostingOne(jobPostingBoardId);
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		CompanyAddressDto addressPS = companyService.findByAddress(principal.getCompanyId());
@@ -125,10 +126,10 @@ public class CompanyController {
 		model.addAttribute("jobPostingPS", jobPostingPS);
 		return "company/jobPostingBoardDetail";
 	}
-	
-	// 채용 공고 수정 폼 
+
+	// 채용 공고 수정 폼
 	@GetMapping("/company/jobPostingBoardUpdate/{jobPostingBoardId}")
-	public String jobPostingBoardUpdate(Model model,@PathVariable Integer jobPostingBoardId) {
+	public String jobPostingBoardUpdate(Model model, @PathVariable Integer jobPostingBoardId) {
 		JobPostingBoardDetailDto jobPostingPS = companyService.jobPostingOne(jobPostingBoardId);
 		SignedDto<?> principal = (SignedDto<?>) session.getAttribute("principal");
 		CompanyAddressDto addressPS = companyService.findByAddress(principal.getCompanyId());
@@ -136,31 +137,20 @@ public class CompanyController {
 		model.addAttribute("jobPostingPS", jobPostingPS);
 		return "company/jobPostingBoardUpdate";
 	}
-	
-	@PutMapping("/company/jobPostingBoardUpdate/{jobPostingBoardId}")
-	public @ResponseBody ResponseDto<?> companyUpdate(@PathVariable Integer jobPostingBoardId,@RequestBody JobPostingBoardUpdateDto jobPostingBoardUdateDto) {
-		//@Param("categoryId") Integer categoryId, @Param("careerId")Integer careerId, 
-		companyService.updateJobPostingBoard(jobPostingBoardId, jobPostingBoardUdateDto);
-//		System.out.println("================================");
-//		System.out.println(jobPostingBoardUdateDto.getCategoryBackend());
-//		System.out.println(jobPostingBoardUdateDto.getCategoryFrontend());
-//		System.out.println(jobPostingBoardUdateDto.getCategoryDevops());
-//		System.out.println(jobPostingBoardUdateDto.getOneYearLess());
-//		System.out.println(jobPostingBoardUdateDto.getTwoYearOver());
-//		System.out.println(jobPostingBoardUdateDto.getThreeYearOver());
-//		System.out.println(jobPostingBoardUdateDto.getFiveYearOver());
-//		System.out.println("================================");
 
+	@PutMapping("/company/jobPostingBoardUpdate/{jobPostingBoardId}")
+	public @ResponseBody ResponseDto<?> companyUpdate(@PathVariable Integer jobPostingBoardId,
+			@RequestBody JobPostingBoardUpdateDto jobPostingBoardUdateDto) {
+		// @Param("categoryId") Integer categoryId, @Param("careerId")Integer careerId,
+		companyService.updateJobPostingBoard(jobPostingBoardId, jobPostingBoardUdateDto);
 		return new ResponseDto<>(1, "수정 성공", null);
 	}
-	
-	//채용 공고 삭제 
+
+	// 채용 공고 삭제
 	@DeleteMapping("/company/jobPostingBoard/delete/{jobPostingBoardId}")
-	public @ResponseBody ResponseDto<?> deleteResumes(@PathVariable Integer jobPostingBoardId){
+	public @ResponseBody ResponseDto<?> deleteResumes(@PathVariable Integer jobPostingBoardId) {
 		companyService.deleteJobposting(jobPostingBoardId);
 		return new ResponseDto<>(1, "채용공고 삭제 성공", null);
 	}
 
 }
-	
-

@@ -2,8 +2,8 @@ package site.metacoding.miniproject.domain.company;
 
 import java.util.List;
 
-import site.metacoding.miniproject.web.dto.response.CompanyAddressDto;
-import site.metacoding.miniproject.web.dto.response.CompanyInfoDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyAddressDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyInfoDto;
 
 public interface CompanyDao {
 	public void insert(Company company);

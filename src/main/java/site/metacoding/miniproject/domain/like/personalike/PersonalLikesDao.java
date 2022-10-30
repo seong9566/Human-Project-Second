@@ -2,7 +2,7 @@ package site.metacoding.miniproject.domain.like.personalike;
 
 import java.util.List;
 
-import site.metacoding.miniproject.web.dto.request.PersonalLikeDto;
+import site.metacoding.miniproject.web.dto.request.personal.PersonalLikeDto;
 
 public interface PersonalLikesDao {
 	public void insert(PersonalLike personalLike);

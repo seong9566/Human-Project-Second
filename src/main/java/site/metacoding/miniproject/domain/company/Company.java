@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import site.metacoding.miniproject.web.dto.request.CompanyJoinDto;
-import site.metacoding.miniproject.web.dto.request.CompanyUpdateDto;
+import site.metacoding.miniproject.web.dto.request.company.CompanyJoinDto;
+import site.metacoding.miniproject.web.dto.request.company.CompanyUpdateDto;
 
 @Getter
 @Setter
@@ -30,7 +30,7 @@ public class Company implements Serializable {
 		this.companyAddress = joinDto.getCompanyAddress();
 		this.companyPhoneNumber = joinDto.getCompanyPhoneNumber();
 	}
-	
+
 	public void updateCompany(CompanyUpdateDto companyInformUpdateDto) {
 		this.companyName = companyInformUpdateDto.getCompanyName();
 		this.companyPicture = companyInformUpdateDto.getCompanyPicture();
@@ -38,5 +38,5 @@ public class Company implements Serializable {
 		this.companyPhoneNumber = companyInformUpdateDto.getCompanyPhoneNumber();
 		this.companyAddress = companyInformUpdateDto.getCompanyAddress();
 	}
-	
+
 }

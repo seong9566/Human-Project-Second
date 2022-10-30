@@ -1,30 +1,20 @@
 package site.metacoding.miniproject.web;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.miniproject.domain.alarm.Alarm;
-import site.metacoding.miniproject.domain.company.Company;
-import site.metacoding.miniproject.domain.resumes.ResumesDao;
-import site.metacoding.miniproject.service.Users.UsersService;
+import site.metacoding.miniproject.service.users.UsersService;
 import site.metacoding.miniproject.web.dto.response.ResponseDto;
-import site.metacoding.miniproject.web.dto.response.SignedDto;
 
 @Controller
 @RequiredArgsConstructor

@@ -19,15 +19,15 @@ import site.metacoding.miniproject.domain.jobpostingboard.JobPostingBoard;
 import site.metacoding.miniproject.domain.jobpostingboard.JobPostingBoardDao;
 import site.metacoding.miniproject.domain.users.Users;
 import site.metacoding.miniproject.domain.users.UsersDao;
-import site.metacoding.miniproject.web.dto.request.CompanyUpdateDto;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardInsertDto;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardUpdateDto;
-import site.metacoding.miniproject.web.dto.response.CompanyAddressDto;
-import site.metacoding.miniproject.web.dto.response.CompanyInfoDto;
-import site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto;
-import site.metacoding.miniproject.web.dto.response.JobPostingBoardListDto;
-import site.metacoding.miniproject.web.dto.response.PagingDto;
-import site.metacoding.miniproject.web.dto.response.PersonalMainDto;
+import site.metacoding.miniproject.web.dto.request.company.CompanyUpdateDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardInsertDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardUpdateDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyAddressDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyInfoDto;
+import site.metacoding.miniproject.web.dto.response.etc.PagingDto;
+import site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardDetailDto;
+import site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardListDto;
+import site.metacoding.miniproject.web.dto.response.personal.PersonalMainDto;
 
 @Service
 @RequiredArgsConstructor
@@ -121,7 +121,7 @@ public class CompanyService {
 	}
 
 	// 전체 채용공고 리스트
-	public List<PersonalMainDto> findAll (int startNum) {
+	public List<PersonalMainDto> findAll(int startNum) {
 		List<PersonalMainDto> personalMainPS = jobPostingBoardDao.findAll(startNum);
 		// TimeStamp to String
 		for (PersonalMainDto deadLine : personalMainPS) {
@@ -135,7 +135,7 @@ public class CompanyService {
 	}
 
 	// 페이징
-	public PagingDto jobPostingBoardPaging(Integer page, String keyword) {		
+	public PagingDto jobPostingBoardPaging(Integer page, String keyword) {
 		return jobPostingBoardDao.jobPostingBoardPaging(page, keyword);
 	}
 
@@ -151,8 +151,8 @@ public class CompanyService {
 			deadLine.setFormatDeadLine(formattedDate);
 		}
 		return personalMainPS;
-	}	
-	
+	}
+
 	// 카테고리 별 리스트 보기
 	public List<PersonalMainDto> findCategory(int startNum, Integer id) {
 		List<PersonalMainDto> personalMainPS = jobPostingBoardDao.findCategory(startNum, id);
@@ -166,6 +166,7 @@ public class CompanyService {
 		}
 		return personalMainPS;
 	}
+
 	// 카테고리 별 검색 결과 리스트
 	public List<PersonalMainDto> findCategorySearch(int startNum, String keyword, Integer id) {
 		List<PersonalMainDto> personalMainPS = jobPostingBoardDao.findCategorySearch(startNum, keyword, id);
@@ -179,5 +180,5 @@ public class CompanyService {
 		}
 		return personalMainPS;
 	}
-	
+
 }

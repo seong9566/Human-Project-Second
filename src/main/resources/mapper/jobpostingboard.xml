@@ -6,7 +6,7 @@
 	namespace="site.metacoding.miniproject.domain.jobpostingboard.JobPostingBoardDao">
 
 	<select id="jobPostingAddress"
-		resultType="site.metacoding.miniproject.web.dto.response.CompanyAddressDto">
+		resultType="site.metacoding.miniproject.web.dto.response.company.CompanyAddressDto">
 		SELECT job_posting_board_id,
 		SUBSTRING_INDEX(SUBSTRING_INDEX(job_posting_board_place,',',1),',',-1)
 		AS
@@ -19,7 +19,7 @@
 		=#{jobPostingBoardId}
 	</select>
 
-	<select id="jobPostingBoardList" resultType="site.metacoding.miniproject.web.dto.response.JobPostingBoardListDto">
+	<select id="jobPostingBoardList" resultType="site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardListDto">
 		SELECT 
 		jpb.job_posting_board_id,
 		jpb.company_id,
@@ -82,7 +82,7 @@
 	</update>
 
 	<select id="findByDetail"
-		resultType="site.metacoding.miniproject.web.dto.response.JobPostingBoardDetailDto">
+		resultType="site.metacoding.miniproject.web.dto.response.jobpostingboard.JobPostingBoardDetailDto">
 			SELECT 
 		jpb.job_posting_board_id,
 		jpb.company_id,
@@ -140,7 +140,7 @@
 
 
 	<select id="jobPostingBoardPaging"
-		resultType="site.metacoding.miniproject.web.dto.response.PagingDto">
+		resultType="site.metacoding.miniproject.web.dto.response.etc.PagingDto">
 		SELECT totalCount, totalPage, currentPage,
 		if(currentPage=0, 1, 0)
 		FIRST,
@@ -160,7 +160,7 @@
 	</select>	
 	
 	<select id="findAll"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalMainDto">
 		SELECT job_posting_board_id, job_posting_board_title, job_posting_board_deadline,
 		if(job_posting_board_deadline > NOW(),'모집중','모집 마감') state 
 		FROM job_posting_board
@@ -168,7 +168,7 @@
 	</select>
 	
 	<select id="findSearch"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalMainDto">
 		SELECT job_posting_board_id, job_posting_board_title, job_posting_board_deadline,
 		if(job_posting_board_deadline > NOW(),'모집중','모집 마감') state
 		FROM job_posting_board
@@ -177,7 +177,7 @@
 	</select>	
 	
 	<select id="findCategory"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalMainDto">
 		SELECT b.job_posting_board_id, c.category_id, c.category_frontend, 
 		c.category_backend, c.category_devops, b.job_posting_board_category_id,
 		b.job_posting_board_title, b.job_posting_board_deadline,
@@ -206,7 +206,7 @@
 	</select>	
 	
 	<select id="findCategorySearch"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalMainDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalMainDto">
 		SELECT b.job_posting_board_id, c.category_id, c.category_frontend, 
 		c.category_backend, c.category_devops, b.job_posting_board_category_id,
 		b.job_posting_board_title, b.job_posting_board_deadline,

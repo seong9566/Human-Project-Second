@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import site.metacoding.miniproject.web.dto.response.CompanyMainDto;
-import site.metacoding.miniproject.web.dto.response.PagingDto;
-import site.metacoding.miniproject.web.dto.response.ResumesDetailDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyMainDto;
+import site.metacoding.miniproject.web.dto.response.etc.PagingDto;
+import site.metacoding.miniproject.web.dto.response.resume.ResumesDetailDto;
 
 public interface ResumesDao {
 
@@ -21,6 +21,7 @@ public interface ResumesDao {
 
 	// 이력서 수정
 	public Resumes findById(Integer resumesId);
+
 	public void update(Resumes resumes);
 
 	// 이력서 삭제
@@ -28,16 +29,18 @@ public interface ResumesDao {
 
 	// 이력서 전체 목록 보기
 
-	public List<CompanyMainDto> findAll(int startNum);	
+	public List<CompanyMainDto> findAll(int startNum);
 
 	// 페이징
 	public PagingDto resumesPaging(@Param("page") Integer page, @Param("keyword") String keyword);
-	
+
 	// 검색 결과 목록 보기
 	public List<CompanyMainDto> findSearch(@Param("startNum") int startNum, @Param("keyword") String keyword);
 
-	// 카테고리별 목록보기	
+	// 카테고리별 목록보기
 	public List<CompanyMainDto> findCategory(@Param("startNum") Integer startNum, @Param("id") Integer id);
-	public List<CompanyMainDto> findCategorySearch(@Param("startNum") int startNum, @Param("keyword") String keyword, @Param("id") Integer id);
+
+	public List<CompanyMainDto> findCategorySearch(@Param("startNum") int startNum, @Param("keyword") String keyword,
+			@Param("id") Integer id);
 
 }

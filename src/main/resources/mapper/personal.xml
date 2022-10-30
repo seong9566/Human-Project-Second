@@ -18,14 +18,14 @@
 		VALUES(#{personalName},#{personalEmail}, #{personalEducation}, #{personalPhoneNumber}, #{personalAddress}, NOW())
 	</insert>
 
-	<select id="personalInfoById" resultType="site.metacoding.miniproject.web.dto.response.PersonalInfoDto">
+	<select id="personalInfoById" resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalInfoDto">
 		SELECT personal_name, personal_email, personal_education, personal_phone_number, personal_address
 		FROM personal
 		WHERE personal_id = #{personalId}
 	</select>
 	
 	<select id="personalformById"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalFormDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalFormDto">
 		SELECT personal_name, personal_email, personal_phone_number
 		, personal_education
 		from personal
@@ -33,7 +33,7 @@
 	</select>
 
 	<select id="personalAddressById"
-		resultType="site.metacoding.miniproject.web.dto.response.PersonalAddressDto">
+		resultType="site.metacoding.miniproject.web.dto.response.personal.PersonalAddressDto">
 		SELECT personal_id,
 		SUBSTRING_INDEX(SUBSTRING_INDEX(personal_address,',',1),',',-1) AS
 		zonecode,
@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="personalUpdateById"
-		resultType="site.metacoding.miniproject.web.dto.request.PersonalUpdateDto">
+		resultType="site.metacoding.miniproject.web.dto.request.personal.PersonalUpdateDto">
 		SELECT * FROM personal
 		left OUTER JOIN users
 		ON

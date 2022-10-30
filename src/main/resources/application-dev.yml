@@ -10,13 +10,13 @@ spring:
     username: jobsmatch
     password: 1234
   
-  jpa:
-    open-in-view: false
-    hibernate:
-      ddl-auto: create
+  # jpa:
+  #   open-in-view: false
+  #   hibernate:
+  #     ddl-auto: create
       
-    properties:
-      '[hibernate.format_sql]': true    
+    # properties:
+    #   '[hibernate.format_sql]': true    
   output:
     ansi:
       enabled: always

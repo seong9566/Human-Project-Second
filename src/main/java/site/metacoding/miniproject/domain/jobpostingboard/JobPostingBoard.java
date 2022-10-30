@@ -1,13 +1,12 @@
 package site.metacoding.miniproject.domain.jobpostingboard;
 
-
 import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardInsertDto;
-import site.metacoding.miniproject.web.dto.request.JobPostingBoardUpdateDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardInsertDto;
+import site.metacoding.miniproject.web.dto.request.jobpostingboard.JobPostingBoardUpdateDto;
 
 @Getter
 @Setter
@@ -31,8 +30,8 @@ public class JobPostingBoard {
 		this.jobPostingBoardPlace = jobPostingBoardInsertDto.getJobPostingBoardPlace();
 		this.jobPostingBoardDeadline = jobPostingBoardInsertDto.getJobPostingBoardDeadline();
 	}
-	
-	public JobPostingBoard(Integer jobPostingBoardId,JobPostingBoardUpdateDto updateDto) {
+
+	public JobPostingBoard(Integer jobPostingBoardId, JobPostingBoardUpdateDto updateDto) {
 		this.jobPostingBoardId = jobPostingBoardId;
 		this.jobPostingSalary = updateDto.getJobPostingSalary();
 		this.jobPostingBoardTitle = updateDto.getJobPostingBoardTitle();

@@ -19,15 +19,15 @@ import site.metacoding.miniproject.domain.resumes.Resumes;
 import site.metacoding.miniproject.domain.resumes.ResumesDao;
 import site.metacoding.miniproject.domain.users.Users;
 import site.metacoding.miniproject.domain.users.UsersDao;
-import site.metacoding.miniproject.web.dto.request.PersonalUpdateDto;
-import site.metacoding.miniproject.web.dto.request.ResumesInsertDto;
-import site.metacoding.miniproject.web.dto.request.ResumesUpdateDto;
-import site.metacoding.miniproject.web.dto.response.CompanyMainDto;
-import site.metacoding.miniproject.web.dto.response.PagingDto;
-import site.metacoding.miniproject.web.dto.response.PersonalAddressDto;
-import site.metacoding.miniproject.web.dto.response.PersonalFormDto;
-import site.metacoding.miniproject.web.dto.response.PersonalInfoDto;
-import site.metacoding.miniproject.web.dto.response.ResumesDetailDto;
+import site.metacoding.miniproject.web.dto.request.personal.PersonalUpdateDto;
+import site.metacoding.miniproject.web.dto.request.resume.ResumesInsertDto;
+import site.metacoding.miniproject.web.dto.request.resume.ResumesUpdateDto;
+import site.metacoding.miniproject.web.dto.response.company.CompanyMainDto;
+import site.metacoding.miniproject.web.dto.response.etc.PagingDto;
+import site.metacoding.miniproject.web.dto.response.personal.PersonalAddressDto;
+import site.metacoding.miniproject.web.dto.response.personal.PersonalFormDto;
+import site.metacoding.miniproject.web.dto.response.personal.PersonalInfoDto;
+import site.metacoding.miniproject.web.dto.response.resume.ResumesDetailDto;
 
 @Service
 @RequiredArgsConstructor
@@ -78,18 +78,18 @@ public class PersonalService {
 	// 이력서 수정 하기
 	@Transactional(rollbackFor = RuntimeException.class)
 	public void updateResumes(Integer resumesId, ResumesUpdateDto updateResumesDto) {
-		
+
 		Resumes resumes = new Resumes(resumesId, updateResumesDto);
 		resumesDao.update(resumes);
-		
+
 		Category category = new Category(updateResumesDto.getCategoryId(), updateResumesDto);
 		categoryDao.update(category);
 
 		Portfolio portfolio = new Portfolio(updateResumesDto.getPortfolioId(), updateResumesDto);
 		portfolioDao.update(portfolio);
 
-		Career career = new Career(updateResumesDto.getCareerId() ,updateResumesDto);
-		careerDao.update(career);		
+		Career career = new Career(updateResumesDto.getCareerId(), updateResumesDto);
+		careerDao.update(career);
 
 	}
 
@@ -102,21 +102,22 @@ public class PersonalService {
 	public List<CompanyMainDto> resumesAll(Integer startNum) {
 		return resumesDao.findAll(startNum);
 	}
-	
+
 	// 페이징
-	public PagingDto resumesPaging(Integer page, String keyword) {		
+	public PagingDto resumesPaging(Integer page, String keyword) {
 		return resumesDao.resumesPaging(page, keyword);
 	}
-	
+
 	// 검색 결과 목록 보기
 	public List<CompanyMainDto> findSearch(Integer startNum, String keyword) {
 		return resumesDao.findSearch(startNum, keyword);
 	}
-	
+
 	// 카테고리 별 리스트 보기
 	public List<CompanyMainDto> findCategory(int startNum, Integer id) {
 		return resumesDao.findCategory(startNum, id);
 	}
+
 	// 카테고리 별 검색 결과 리스트
 	public List<CompanyMainDto> findCategorySearch(int startNum, String keyword, Integer id) {
 		return resumesDao.findCategorySearch(startNum, keyword, id);

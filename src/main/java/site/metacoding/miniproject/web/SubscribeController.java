@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import lombok.RequiredArgsConstructor;
 import site.metacoding.miniproject.config.handler.exception.ApiException;
-import site.metacoding.miniproject.config.handler.exception.NormalException;
 import site.metacoding.miniproject.domain.subscribe.Subscribe;
-import site.metacoding.miniproject.service.Users.SubscribeService;
+import site.metacoding.miniproject.service.users.SubscribeService;
 import site.metacoding.miniproject.web.dto.response.ResponseDto;
-import site.metacoding.miniproject.web.dto.response.SignedDto;
+import site.metacoding.miniproject.web.dto.response.etc.SignedDto;
 
 @Controller
 @RequiredArgsConstructor
